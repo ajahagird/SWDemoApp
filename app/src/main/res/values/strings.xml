@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SWDemoApp</string>
+    <string name="title_home">Dynamic</string>
+    <string name="title_dashboard">StaticDynamic</string>
+    <string name="title_notifications">StaticBrokenDynamic</string>
+    <string name="title_error">Error</string>
+    <string name="error_text">Error occurred while loading the page. Press home to go back.</string>
+</resources>
