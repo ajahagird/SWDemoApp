@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">SWDemoApp</string>
-    <string name="title_home">Dynamic</string>
-    <string name="title_dashboard">StaticDynamic</string>
-    <string name="title_notifications">StaticBrokenDynamic</string>
+    <string name="title_home">Home</string>
+    <string name="title_SW_200">SW 200</string>
+    <string name="title_SW_500">SW 500</string>
+    <string name="title_NonSW_500">Non SW 500</string>
+    <string name="title_500">500</string>
     <string name="title_error">Error</string>
-    <string name="error_text">Error occurred while loading the page. Press home to go back.</string>
+    <string name="error_text">Native response: Error occurred while loading the page. Press home to go back.</string>
 </resources>

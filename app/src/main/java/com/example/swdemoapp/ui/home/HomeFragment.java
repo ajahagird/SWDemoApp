@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,14 +35,14 @@ public class HomeFragment extends Fragment {
         webView.setWebViewClient(new WebViewClient(getActivity()));
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        if(getArguments() != null) {
+            final String url = HomeFragmentArgs.fromBundle(getArguments()).getUrl();
+            webView.loadUrl(url);
+        } else {
+            webView.loadUrl("https://cactus-fixed-value.glitch.me");
+        }
 
 
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                webView.loadUrl(s);
-            }
-        });
         return root;
     }
 
