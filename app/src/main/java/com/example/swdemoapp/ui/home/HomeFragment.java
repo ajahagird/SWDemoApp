@@ -39,9 +39,8 @@ public class HomeFragment extends Fragment {
             final String url = HomeFragmentArgs.fromBundle(getArguments()).getUrl();
             webView.loadUrl(url);
         } else {
-            webView.loadUrl("https://cactus-fixed-value.glitch.me");
+            webView.loadUrl("https://massive-delirious-wish.glitch.me");
         }
-
 
         return root;
     }

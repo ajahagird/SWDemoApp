@@ -46,9 +46,11 @@ public class WebViewClient extends android.webkit.WebViewClient {
 
     @Override
     public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
-        Toast.makeText(view.getContext(), "onReceivedHttpError", Toast.LENGTH_SHORT).show();
-        NavController navController = Navigation.findNavController(activity, R.id.nav_host_fragment_activity_main);
-        navController.navigate(R.id.navigation_error);
+        if (request.isForMainFrame()) {
+            Toast.makeText(view.getContext(), "onReceivedHttpError", Toast.LENGTH_SHORT).show();
+            NavController navController = Navigation.findNavController(activity, R.id.nav_host_fragment_activity_main);
+            navController.navigate(R.id.navigation_error);
+        }
         super.onReceivedHttpError(view, request, errorResponse);
     }
 

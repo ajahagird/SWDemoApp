@@ -2,7 +2,10 @@ package com.example.swdemoapp;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.WebStorage;
 import android.webkit.WebView;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -47,13 +50,37 @@ public class MainActivity extends AppCompatActivity {
                 if(destination.getId() == R.id.navigation_error) {
                     navView.setVisibility(View.GONE);
                     getSupportActionBar().hide();
+                    findViewById(R.id.clear_webview_button).setVisibility(View.GONE);
                 } else {
                     navView.setVisibility(View.VISIBLE);
                     getSupportActionBar().show();
+                    findViewById(R.id.clear_webview_button).setVisibility(View.VISIBLE);
                 }
             }
         });
         WebView.setWebContentsDebuggingEnabled(true);
+
+        Button button = findViewById(R.id.clear_webview_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebStorage.getInstance().deleteAllData();
+
+                // Clear all the cookies
+                CookieManager.getInstance().removeAllCookies(null);
+                CookieManager.getInstance().flush();
+
+                WebView webView = new WebView(getApplicationContext());
+                webView.clearCache(true);
+                webView.clearFormData();
+                webView.clearHistory();
+                webView.clearSslPreferences();
+                webView.destroy();
+
+                NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.navigation_home);
+            }
+        });
     }
 
 }
